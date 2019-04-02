@@ -13,7 +13,7 @@ router.get('/api/list', (req, res) => {
   var start = req.query.start
   console.log(start)
   if (start === 'homepage') {
-    conn.query('SELECT * from homepage limit 0, 4', function (error, results, fields) {
+    conn.query('SELECT * from homepage limit 0, 3', function (error, results, fields) {
       if (error) {
         throw error
       }

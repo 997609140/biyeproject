@@ -1,31 +1,21 @@
 <template>
   <div>
     <x-header class='header' :title='news' style='background-color:#5eadd6'/>
-    <div>
-      <div
-        style="margin: 10px;overflow: hidden;"
-        v-for="(item, index) in list"
-        :key= index
-      >
-        <masker style="border-radius: 2px;">
-          <div class="m-img" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
-          <div slot="content" class="m-title">
-            {{item.title}}
-            <br/>
-            <span class="m-time">{{onClickItem(item.time)}}</span>
-          </div>
-        </masker>
-      </div>
+    <div class="secondhand">
+      <card :header="{title: '商品详情' }" :footer="{title: '查看更多',link:'/component/panel'}">
+        <p slot="content" class="card-padding">{{ 'Custom content' }}</p>
+      </card>
     </div>
   </div>
 </template>
 <script>
-import { Masker } from 'vux'
+import { Masker, Card } from 'vux'
 import axios from 'axios'
 export default {
   name: 'SecondHand',
   components: {
-    Masker
+    Masker,
+    Card
   },
   data () {
     return {
@@ -65,3 +55,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.navigion {
+  height: 60px;
+  background-color: antiquewhite
+}
+.card-padding {
+  padding: 15px;
+}
+</style>
+
