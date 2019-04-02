@@ -1,0 +1,77 @@
+CREATE TABLE `homelist` (
+  `i_id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`i_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+CREATE TABLE `campusinformation` (
+  `h_id` int(11) NOT NULL AUTO_INCREMENT,
+  `src` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `desc` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `time` datetime DEFAULT NULL,
+  `author` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `source` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `clicks` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`h_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `homelist` (
+  `i_id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`i_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `homelist2` (
+  `l_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`l_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `homepage` (
+  `h_id` int(11) NOT NULL AUTO_INCREMENT,
+  `src` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `desc` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `time` datetime DEFAULT NULL,
+  `author` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `source` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `clicks` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`h_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `school` (
+  `h_id` int(11) NOT NULL AUTO_INCREMENT,
+  `src` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `desc` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `time` datetime DEFAULT NULL,
+  `author` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `source` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `clicks` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`h_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `secondhand` (
+  `h_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `commodity` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `describe` varchar(300) COLLATE utf8_bin DEFAULT NULL,
+  `img` varchar(300) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`h_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `stus` (
+  `ID` int(4) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tel` varchar(13) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `stuviews` json DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
