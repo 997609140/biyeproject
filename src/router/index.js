@@ -42,6 +42,11 @@ export default new Router({
 
     // 导航
     {
+      path: '/CommodityDetails',
+      name: 'CommodityDetails',
+      component: () => import('../view/Navigation/CommodityDetails.vue')
+    },
+    {
       path: '/SecondHand',
       name: 'SecondHand',
       component: () => import('../view/Navigation/SecondHand.vue')

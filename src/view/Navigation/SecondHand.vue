@@ -3,34 +3,51 @@
     <x-header class='header' :title='news' style='background-color:#5eadd6'/>
     <div class="secondhand">
       <card :header="{title: '商品详情' }" :footer="{title: '查看更多',link:'/component/panel'}">
-        <p slot="content" class="card-padding">{{ 'Custom content' }}</p>
+        <div
+          slot="content"
+          class="card-padding"
+          v-for="(item, index) in list"
+          :key="index"
+          @click="onClickItem(item)"
+        >
+          <div
+            class="img"
+          >
+            <img :src="item.img">
+            <div class="secondhandviews">
+              商品名称: <span> {{ item.commodity }}</span><br/>
+
+              联系人: <span> {{ item.name }}</span><br/>
+              价格: <span> {{ item.price }}</span>
+            </div><br/>
+            <span>{{ item.describe }}</span>
+          </div>
+        </div>
       </card>
     </div>
   </div>
 </template>
 <script>
-import { Masker, Card } from 'vux'
+import { Masker, Card, Swiper, SwiperItem, Previewer, TransferDom } from 'vux'
 import axios from 'axios'
 export default {
   name: 'SecondHand',
+  directives: {
+    TransferDom
+  },
   components: {
+    Swiper,
+    SwiperItem,
     Masker,
-    Card
+    Card,
+    Previewer
   },
   data () {
     return {
       news: '跳蚤市场',
+      listindex: 1,
       list1: [],
-      list: [{
-        title: '洗颜新潮流！人气洁面皂排行榜',
-        img: 'https://cdn.xiaotaojiang.com/uploads/82/1572ec37969ee263735262dc017975/_.jpg'
-      }, {
-        title: '美容用品 & 日用品（上）',
-        img: 'https://cdn.xiaotaojiang.com/uploads/59/b22e0e62363a4a652f28630b3233b9/_.jpg'
-      }, {
-        title: '远离车内毒气，日本车载空气净化器精选',
-        img: 'https://cdn.xiaotaojiang.com/uploads/56/4b3601364b86fdfd234ef11d8712ad/_.jpg'
-      }]
+      list: []
     }
   },
   created: function () {
@@ -39,19 +56,25 @@ export default {
   methods: {
     onClickItem (item) {
       console.log(item)
-      axios.get('/api/list')
+      axios.get('/api/secondhandlist')
       .then(function (res) {
         console.log(res.data[item.h_id - 1])
       })
       this.$router.push({
-        path: '/Information',
+        path: '/CommodityDetails',
         query: { list: item }
       })
     },
-    onImgError (item, $event) {
-      console.log(item, $event)
+    show (index) {
+      this.$refs.previewer.show(index)
     },
-    loading () {}
+    loading () {
+      axios.get('/api/secondhandlist')
+      .then(function (res) {
+        this.list = res.data
+        console.log(this.list)
+      }.bind(this))
+    }
   }
 }
 </script>
@@ -63,6 +86,19 @@ export default {
 }
 .card-padding {
   padding: 15px;
+  margin: 0 10px;
+  border-bottom: 1px solid gainsboro;
+}
+.img > img{
+  width: 100px;
+  display: inline-block;
+}
+.secondhandviews {
+  display: inline-block;
+}
+.secondhandviews > span {
+  color: grey;
+  font-size: 14px;
 }
 </style>
 

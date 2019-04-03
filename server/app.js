@@ -28,6 +28,7 @@ app.get('/api/list', require('./api/homepageApi'))
 app.get('/api/list1', require('./api/homepage1Api'))
 app.get('/api/list2', require('./api/homelist2Api'))
 
+app.get('/api/secondhandlist', require('./api/secondhandlist'))
 // 监听端口
 app.listen(8080)
 console.log('success listen at port:3000......')
