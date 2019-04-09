@@ -1,18 +1,18 @@
 <template>
   <div>
-    <x-header class='header' :title='news' style='background-color:#5eadd6'/>
+    <x-header class='header' :title='this.$route.query.list.commodity' style='background-color:#5eadd6'/>
       <div class="img">
         <img
-          class="previewer-demo-img"
           v-for="(item, index) in list"
           :key="index"
-          :src="item.src"
-          width="100"
-          @click="show(index)"
+          :src="item"
+          width="80%px"
         >
-        <div v-transfer-dom>
-          <previewer :list="list" ref="previewer" :options="options" @on-index-change="logIndexChange"></previewer>
-        </div>
+      </div>
+      <div class="views">
+        价格：<span>{{this.$route.query.list.price}}</span><br/>
+        卖家：<span>{{this.$route.query.list.name}}</span><br/>
+        详情：<span>{{this.$route.query.list.describe}}</span>
       </div>
     </div>
 </template>
@@ -29,48 +29,14 @@ export default {
   },
   data () {
     return {
-      news: '跳蚤市场',
       listindex: 1,
-      list1: [],
-      list: [{
-        msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwu9ze86j20m80b40t2.jpg',
-        src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwu9ze86j20m80b40t2.jpg',
-        w: 800,
-        h: 400
-      },
-      {
-        msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
-        src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
-        w: 1200,
-        h: 900
-      },
-      {
-        msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
-        src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
-        w: 1200,
-        h: 900
-      },
-      {
-        msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
-        src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
-        w: 1200,
-        h: 900
-      }],
-      options: {
-        getThumbBoundsFn (index) {
-          // find thumbnail element
-          let thumbnail = document.querySelectorAll('.previewer-demo-img')[index]
-          // get window scroll Y
-          let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
-          // optionally get horizontal scroll
-          // get position of element relative to viewport
-          let rect = thumbnail.getBoundingClientRect()
-          // w = width
-          return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
-          // Good guide on how to get element coordinates:
-          // http://javascript.info/tutorial/coordinates
+      list1: [
+        {
+          w: 600,
+          h: 400
         }
-      }
+      ],
+      list: []
     }
   },
   created: function () {
@@ -97,7 +63,10 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     },
-    loading () {}
+    loading () {
+      this.list = this.$route.query.list.img.split(',')
+      console.log(this.list)
+    }
   }
 }
 </script>
@@ -110,8 +79,15 @@ export default {
 .card-padding {
   padding: 15px;
 }
-.img > swiper {
-  width: 200px;
+.img {
+  margin-top: 10px;
+  text-align: center
+}
+img {
+  margin:5px 10px ;
+}
+.views {
+  margin: 20px
 }
 </style>
 

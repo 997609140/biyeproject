@@ -57,7 +57,7 @@
       </grid>
     </div>
 
-    <div>
+    <!-- <div>
       <div
         style="margin: 10px;overflow: hidden;"
         v-for="(item, index) in list"
@@ -72,7 +72,7 @@
             </div>
           </masker>
       </div>
-    </div>
+    </div> -->
 
     <div>
       <panel
@@ -151,7 +151,7 @@ export default {
           name: '二手市场',
           icon: 'iconfont iconershou1',
           style: 'color:#79ccf7;background-color:#80e29e6e',
-          url: '/SecondHand'
+          url: '/ClassificationPage'
         },
         {
           name: '校园比赛',
@@ -196,7 +196,6 @@ export default {
       index: 0,
       demo01_list: [],
       demo01_index: 0,
-      list: [],
       results: [],
       value: '',
       list1: [],
@@ -247,10 +246,10 @@ export default {
       this.demo01_list = res.data
     }.bind(this))
 
-    axios.get('/api/list2')
-    .then(function (res) {
-      this.list = res.data
-    }.bind(this))
+    // axios.get('/api/list2')
+    // .then(function (res) {
+    //   this.list = res.data
+    // }.bind(this))
   },
 
   methods: {
@@ -340,7 +339,7 @@ function getResult (val) {
 </script>
 
 <style scoped>
-.m-img {
+/* .m-img {
   padding-bottom: 33%;
   display: block;
   position: relative;
@@ -372,7 +371,7 @@ function getResult (val) {
   border-top: 1px solid #f0f0f0;
   display: inline-block;
   margin-top: 5px;
-}
+} */
 
 .grid-center {
   display: block;

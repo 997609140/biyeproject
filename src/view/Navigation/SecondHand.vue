@@ -1,8 +1,9 @@
 <template>
   <div>
-    <x-header class='header' :title='news' style='background-color:#5eadd6'/>
+    <x-header class='header' :title='this.$route.query.name' style='background-color:#5eadd6'/>
     <div class="secondhand">
-      <card :header="{title: '商品详情' }" :footer="{title: '查看更多',link:'/component/panel'}">
+      <card :header="{title: '商品详情' }">
+        <!-- :footer="{title: '查看更多',link:'/component/panel'}" -->
         <div
           slot="content"
           class="card-padding"
@@ -13,12 +14,12 @@
           <div
             class="img"
           >
-            <img :src="item.img">
+            <img :src="item.img.split(',')[0]">
             <div class="secondhandviews">
               商品名称: <span> {{ item.commodity }}</span><br/>
 
               联系人: <span> {{ item.name }}</span><br/>
-              价格: <span> {{ item.price }}</span>
+              价格: <span> {{ item.price }}</span>元
             </div><br/>
             <span>{{ item.describe }}</span>
           </div>
@@ -47,7 +48,8 @@ export default {
       news: '跳蚤市场',
       listindex: 1,
       list1: [],
-      list: []
+      list: [],
+      imgsrc: []
     }
   },
   created: function () {
@@ -56,10 +58,6 @@ export default {
   methods: {
     onClickItem (item) {
       console.log(item)
-      axios.get('/api/secondhandlist')
-      .then(function (res) {
-        console.log(res.data[item.h_id - 1])
-      })
       this.$router.push({
         path: '/CommodityDetails',
         query: { list: item }
@@ -69,7 +67,12 @@ export default {
       this.$refs.previewer.show(index)
     },
     loading () {
-      axios.get('/api/secondhandlist')
+      var _this = this
+      axios.get('/api/secondhandlist', {
+        params: {
+          key: _this.$route.query.key
+        }
+      })
       .then(function (res) {
         this.list = res.data
         console.log(this.list)

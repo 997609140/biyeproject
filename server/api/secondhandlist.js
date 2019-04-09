@@ -9,11 +9,13 @@ var conn = mysql.createConnection(models.mysql)
 conn.connect()
 
 router.get('/api/secondhandlist', (req, res) => {
-  conn.query('SELECT * from secondhand', function (error, results, fields) {
+  var num = req.query.key
+  console.log(num)
+  conn.query('SELECT * from secondhand where num = ?', num, function (error, results, fields) {
     if (error) {
       throw error
     }
-    console.log(results)
+    // console.log(results)
     res.json(results)
   })
 })
