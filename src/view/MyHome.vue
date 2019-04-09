@@ -1,64 +1,67 @@
 <template>
-  <div class="home-page">
-    <div class="header-t">
-      <flexbox class="heater-j">
-        <flexbox-item :span="4">
-          <div class="flex-demo">
-            <img  :src="this.url">
-          </div>
-        </flexbox-item>
-        <flexbox-item :style="{ 'display' :Flag == 'isLogin'?'block':'none' }">
-          <div class="flex-demo1" style="text-aline:left;">
-            <span style="font-size:24px;">{{username}}</span> <br/>
-            <span>简介:</span><span style="font-size:13px;">这个人很懒啥都没留下~</span>
-          </div>
-        </flexbox-item>
-        <flexbox-item :style="{ 'display' :Flag == 'isLogin'?'none':'block' }">
-          <div class="flex-demo1" style="text-aline:left;color:lightblue">
-            <router-link to="/login">请先登录</router-link>
-          </div>
-        </flexbox-item>
-      </flexbox>
-      <div class="view">
-        <flexbox>
-          <flexbox-item
-            v-for="(list, i) in list"
-            :key="i"
-            :style="list.color"
-          ><div class="flex-demo"><i :class="list.class" /></div></flexbox-item>
+  <div>
+    <div class="home-page">
+      <div class="header-t">
+        <flexbox class="heater-j">
+          <flexbox-item :span="4">
+            <div class="flex-demo">
+              <img  :src="this.url">
+            </div>
+          </flexbox-item>
+          <flexbox-item :style="{ 'display' :Flag == 'isLogin'?'block':'none' }">
+            <div class="flex-demo1" style="text-aline:left;">
+              <span style="font-size:24px;">{{username}}</span> <br/>
+              <span>简介:</span><span style="font-size:13px;">这个人很懒啥都没留下~</span>
+            </div>
+          </flexbox-item>
+          <flexbox-item :style="{ 'display' :Flag == 'isLogin'?'none':'block' }">
+            <div class="flex-demo1" style="text-aline:left;color:lightblue">
+              <router-link to="/login">请先登录</router-link>
+            </div>
+          </flexbox-item>
         </flexbox>
-        <flexbox>
-          <flexbox-item
-            v-for="(list, i) in list"
+        <div class="view">
+          <flexbox>
+            <flexbox-item
+              v-for="(list, i) in list"
+              :key="i"
+              :style="list.color"
+            ><div class="flex-demo"><i :class="list.class" /></div></flexbox-item>
+          </flexbox>
+          <flexbox>
+            <flexbox-item
+              v-for="(list, i) in list"
+              :key="i"
+              style="color:black"
+            ><div class="flex-demo">{{list.name}}:{{list.num}}</div></flexbox-item>
+          </flexbox>
+        </div>
+      </div>
+      <div style="margin-bottom:80px;">
+        <group>
+          <cell
+            v-for="(tab, i) in tabs"
             :key="i"
-            style="color:black"
-          ><div class="flex-demo">{{list.name}}:{{list.num}}</div></flexbox-item>
-        </flexbox>
+            style="color:black;"
+            :title="tab.title"
+            :link="tab.url"
+          >
+          <div slot="icon" style="margin-right:5px;" ><i :style="tab.color" :class="tab.icon"/></div>
+          </cell>
+        </group>
+        <group>
+          <cell
+            v-for="(tab, i) in tabs1"
+            :key="i"
+            style="color:black;"
+            :title="tab.title"
+            :link="tab.url"
+          >
+          <div slot="icon" style="margin-right:5px;" ><i :style="tab.color" :class="tab.icon"/></div>
+          </cell>
+        </group>
       </div>
     </div>
-
-    <group>
-      <cell
-        v-for="(tab, i) in tabs"
-        :key="i"
-        style="color:black;"
-        :title="tab.title"
-        :link="tab.url"
-      >
-      <div slot="icon" style="margin-right:5px;" ><i :style="tab.color" :class="tab.icon"/></div>
-      </cell>
-    </group>
-    <group>
-      <cell
-        v-for="(tab, i) in tabs1"
-        :key="i"
-        style="color:black;"
-        :title="tab.title"
-        :link="tab.url"
-      >
-      <div slot="icon" style="margin-right:5px;" ><i :style="tab.color" :class="tab.icon"/></div>
-      </cell>
-    </group>
     <foo-ter/>
   </div>
 </template>
