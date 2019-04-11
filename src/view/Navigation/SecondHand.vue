@@ -59,8 +59,8 @@ export default {
     onClickItem (item) {
       console.log(item)
       this.$router.push({
-        path: '/CommodityDetails',
-        query: { list: item }
+        name: 'CommodityDetails',
+        params: { list: JSON.stringify(item) }
       })
     },
     show (index) {

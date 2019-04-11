@@ -42,7 +42,7 @@ export default new Router({
 
     // 导航
     {
-      path: '/CommodityDetails',
+      path: '/CommodityDetails/:list',
       name: 'CommodityDetails',
       component: () => import('../view/Navigation/CommodityDetails.vue')
     },

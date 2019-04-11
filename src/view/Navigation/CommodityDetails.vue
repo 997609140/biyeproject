@@ -1,20 +1,20 @@
 <template>
-  <div>
-    <x-header class='header' :title='this.$route.query.list.commodity' style='background-color:#5eadd6'/>
-      <div class="img">
-        <img
-          v-for="(item, index) in list"
-          :key="index"
-          :src="item"
-          width="80%px"
-        >
-      </div>
-      <div class="views">
-        价格：<span>{{this.$route.query.list.price}}</span><br/>
-        卖家：<span>{{this.$route.query.list.name}}</span><br/>
-        详情：<span>{{this.$route.query.list.describe}}</span>
-      </div>
+  <div style="background-color: #ddf0f3">
+    <x-header class='header' :title='item.commodity' style='background-color:#5eadd6'/>
+    <div class="views">
+      价格：<span>{{item.price}}</span><br/>
+      卖家：<span>{{item.name}}</span><br/>
+      详情：<span>{{item.describe}}</span>
     </div>
+    <div class="img">
+      <img
+        v-for="(item, index) in list"
+        :key="index"
+        :src="item"
+        width="80%px"
+      >
+    </div>
+  </div>
 </template>
 <script>
 import { Previewer, TransferDom } from 'vux'
@@ -30,6 +30,7 @@ export default {
   data () {
     return {
       listindex: 1,
+      item: JSON.parse(this.$route.params.list),
       list1: [
         {
           w: 600,
@@ -64,7 +65,7 @@ export default {
       this.$refs.previewer.show(index)
     },
     loading () {
-      this.list = this.$route.query.list.img.split(',')
+      this.list = this.item.img.split(',')
       console.log(this.list)
     }
   }
