@@ -18,6 +18,7 @@ app.use(function (req, res, next) {
 })
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false })) // 解析post请求数据
 
 // 登陆api路由
 app.use('/api/login', require('./api/userApi'))
@@ -27,6 +28,8 @@ app.use('/api/register', require('./api/regsterApi'))
 app.get('/api/list', require('./api/homepageApi'))
 app.get('/api/list1', require('./api/homepage1Api'))
 app.get('/api/list2', require('./api/homelist2Api'))
+
+app.use('/api/aynamic', require('./api/aynamicApi'))
 
 app.get('/api/secondhandlist', require('./api/secondhandlist'))
 // 监听端口

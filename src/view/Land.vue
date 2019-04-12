@@ -143,6 +143,7 @@ export default {
           localStorage.setItem('Flag', 'isLogin')
           localStorage.setItem('tel', this.landform.tel)
           localStorage.setItem('src', res.data.src)
+          localStorage.setItem('from_uid', res.data.results)
           this.title = res.data.title
           // 登录成功后跳转到指定页面
           this.showPosition('middle', res.data.title)

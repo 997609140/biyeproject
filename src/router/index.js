@@ -72,7 +72,11 @@ export default new Router({
       name: 'Find',
       component: () => import('../view/Find')
     },
-
+    {
+      path: '/DynamicPublishing',
+      name: 'DynamicPublishing',
+      component: () => import('../view/Dynamic/DynamicPublishing.vue')
+    },
     // 我的
     {
       path: '/MyHome',
