@@ -15,13 +15,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FooTer from '../components/FooTer'
 export default {
   name: 'Find',
   components: {
     FooTer
   },
-  return: {}
+  data () {
+    return {
+      list: []
+    }
+  },
+  created: function () {
+    this.loading()
+  },
+  methods: {
+    loading () {
+      axios.get('/api/fand')
+      .then(function (res) {
+        this.list = res.data
+        console.log(this.list)
+      }.bind(this))
+    }
+  }
 }
 </script>
 

@@ -11,16 +11,14 @@ conn.connect()
 router.post('/', (req, res) => {
   var b = req.body
   console.log(b)
-  console.log(b.tel)
-  var sql = 'INSERT INTO stus (`username`,`tel`, `password`, `stuviews`) values (?,?,?,?)'
-  var views = b.studentview.join('')
-  var data = [b.name, b.tel, b.password, views]
+  var sql = 'INSERT INTO dynamic (`from_uid`,`dynamic`,`name`) values (?,?,?)'
+  var data = [b.from_uid, b.aynamic, b.username]
   conn.query(sql, data, function (err, results) {
     if (err) {
       console.log(err)
     } else {
       console.log('ok')
-      res.json({title: '注册成功', num: 1})
+      res.json({title: '发布成功'})
     }
   })
 })

@@ -1,21 +1,21 @@
 <template>
   <div class="home-page">
-    <x-header style='background-color:#5eadd6'>动态发布</x-header>
+    <x-header style='background-color:#5eadd6'>动态发布
+      <router-link to="" slot="right" @click.native="submitfrom" type="submit">发表</router-link>
+    </x-header>
     <div class="aynamic">
-      <x-input
-        placeholder="标题"
+      <!-- <x-input
+        placeholder="分享"
         v-model="from_aynamic.aynamicname"
         name="aynamicname"
-      />
+      /> -->
       <x-textarea
-        :max="300"
+        :max="600"
         name="aynamic"
         v-model="from_aynamic.aynamic"
         placeholder="请输入内容"
         :show-counter="false"
-        autosize
       />
-      <x-button @click.native="submitfrom" type="button">发表</x-button>
     </div>
     <foo-ter/>
   </div>
@@ -37,9 +37,10 @@ export default {
     return {
       uid: localStorage.getItem('form_uid'),
       from_aynamic: {
-        aynamicname: '',
         aynamic: '',
-        from_uid: ''
+        from_uid: '',
+        time: '',
+        username: ''
       }
     }
   },
@@ -49,6 +50,7 @@ export default {
     },
     submitfrom: function () {
       this.from_aynamic.from_uid = localStorage.from_uid
+      this.from_aynamic.username = localStorage.username
       var obj = this.from_aynamic
       console.log(obj)
       axios.post('/api/aynamic', obj)
@@ -67,6 +69,9 @@ li {
 * {
   margin: 0;
   padding: 0;
+}
+.submitbut {
+  margin-top: 200px;
 }
 </style>
 
