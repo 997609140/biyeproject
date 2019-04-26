@@ -75,7 +75,18 @@ export default new Router({
     {
       path: '/DynamicPublishing',
       name: 'DynamicPublishing',
+      meta: {
+        isLogin: true
+      },
       component: () => import('../view/Dynamic/DynamicPublishing.vue')
+    },
+    {
+      path: '/Dynamic',
+      name: 'Dynamic',
+      meta: {
+        isLogin: true
+      },
+      component: () => import('../view/Dynamic/Dynamic.vue')
     },
     // 我的
     {

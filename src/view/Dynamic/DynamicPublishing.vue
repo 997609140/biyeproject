@@ -4,11 +4,6 @@
       <router-link to="" slot="right" @click.native="submitfrom" type="submit">发表</router-link>
     </x-header>
     <div class="aynamic">
-      <!-- <x-input
-        placeholder="分享"
-        v-model="from_aynamic.aynamicname"
-        name="aynamicname"
-      /> -->
       <x-textarea
         :max="600"
         name="aynamic"

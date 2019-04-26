@@ -9,7 +9,7 @@ var conn = mysql.createConnection(models.mysql)
 conn.connect()
 
 router.get('/api/fand', (req, res) => {
-  conn.query('SELECT * from dynamic', function (error, results) {
+  conn.query('SELECT * from dynamic order by id desc', function (error, results) {
     if (error) {
       throw error
     }
