@@ -30,7 +30,15 @@ app.get('/api/list1', require('./api/homepage1Api'))
 app.get('/api/list2', require('./api/homelist2Api'))
 
 app.get('/api/fand', require('./api/fandApi'))
+
 app.use('/api/aynamic', require('./api/aynamicApi'))
+app.use('/api/find', require('./api/findApi'))
+app.use('/api/findcomment', require('./api/findCommentApi'))
+app.get('/api/findaynamic', require('./api/findaynamicApi'))
+app.get('/api/findviews', require('./api/findViewsApi'))
+
+app.use('/api/addviews', require('./api/addviewsApi'))
+app.get('/api/getlostviews', require('./api/getlostviewsApi'))
 
 app.get('/api/secondhandlist', require('./api/secondhandlist'))
 // 监听端口

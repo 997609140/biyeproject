@@ -3,7 +3,7 @@
     <x-header
       style='background-color:#5eadd6'
     >
-      <i class="iconfont iconquanzi"/>发现
+      <i class="iconfont iconquanzi"/>我的动态
       <router-link slot="right" to="/DynamicPublishing">动态</router-link>
       <div slot='overwrite-left'></div>
     </x-header>
@@ -15,7 +15,11 @@
       @click="onClickItem(item, index)"
     >
       <flexbox>
-        <flexbox-item :span="2"><div class="flex-demo"><img width="80px" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552457521393&di=db5044eeadb7b2645b5b12408fae19d5&imgtype=0&src=http%3A%2F%2Fpic.gerenjianli.com%2Fxiaohui2046%2Fb1051.jpg" alt="" srcset=""></div></flexbox-item>
+        <flexbox-item :span="2">
+          <div class="flex-demo">
+            <img width="60px" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556536990334&di=a69e38af48b68e7cdde00a0c75e16898&imgtype=0&src=http%3A%2F%2Fimg0.pconline.com.cn%2Fpconline%2F1402%2F26%2F4350837_11_thumb.jpg" alt="" srcset="">
+          </div>
+        </flexbox-item>
         <flexbox-item>
           <div class="flex">
             <span>{{item.name}}</span><br/>
@@ -40,11 +44,11 @@
 
 <script>
 import axios from 'axios'
-import FooTer from '../components/FooTer'
+import FooTer from '../../components/FooTer'
 import { XTextarea, XInput, XButton, Flexbox, FlexboxItem } from 'vux'
 
 export default {
-  name: 'Find',
+  name: 'MyDynamic',
   components: {
     FooTer,
     XTextarea,
@@ -63,20 +67,20 @@ export default {
   },
   methods: {
     loading () {
-      axios.get('/api/fand')
+      axios.get('/api/fand', {
+        params: {
+          key: 'mydynamic',
+          user_id: localStorage.from_uid
+        }
+      })
       .then(function (res) {
         this.list = res.data
         console.log(this.list)
       }.bind(this))
     },
-    // find () {
-    //   var obj = this.find
-    //   axios.post('/api/aynamic', obj)
-    //   .then(function (res) {
-    //     console.log(res)
-    //   })
-    // },
     onClickItem (item, index) {
+      // console.log(item)
+      // console.log(index)
       this.$router.push({
         path: '/Dynamic',
         query: { list: item }

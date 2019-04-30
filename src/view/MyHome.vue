@@ -121,11 +121,11 @@ export default {
         iconActive: '\ue63d',
         url: '/main/my'
       }, {
-        title: '我的回复',
+        title: '我的动态',
         icon: 'iconfont iconwodexiaoxi',
         color: 'color:green;font-siae:29px;',
         iconActive: '\ue63d',
-        url: '/main/my'
+        url: '/MyDynamic'
       }],
       tabs1: [{
         title: '帮助与反馈',

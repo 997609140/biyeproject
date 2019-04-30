@@ -51,6 +51,7 @@
           :label="item.name"
           v-for='(item, index) in list3'
           :key="index"
+          :link="item.url"
           :style="item.style">
           <i slot="icon" :class="item.icon" />
         </grid-item>
@@ -145,7 +146,7 @@ export default {
           name: '校园事件',
           icon: 'iconfont iconxiaoyuan',
           style: 'color:#55d436;background-color:#a3daf759',
-          url: '/SecondHand'
+          url: '/TobeDeveloped'
         },
         {
           name: '二手市场',
@@ -157,13 +158,13 @@ export default {
           name: '校园比赛',
           icon: 'iconfont iconQYHD_YH',
           style: 'color:#a6d436;background-color:#b6d8d86e',
-          url: '/SecondHand'
+          url: '/TobeDeveloped'
         },
         {
           name: '班级',
           icon: 'iconfont iconwodexuesheng1',
           style: 'color:#eac248;background-color:#cdc8dc6e',
-          url: '/SecondHand'
+          url: '/TobeDeveloped'
         }
       ],
       list3: [
@@ -171,13 +172,13 @@ export default {
           name: '兼职招聘',
           icon: 'iconfont iconjianzhi2',
           style: 'color:#d29f05;background-color:#a3daf759',
-          url: '/SecondHand'
+          url: '/TobeDeveloped'
         },
         {
           name: '失物招领',
           icon: 'iconfont iconshiwuzhaoling1',
           style: 'color:#03d2ec;background-color:#a3daf759',
-          url: '/SecondHand'
+          url: '/Losthome'
         },
         {
           name: '外卖订餐',
@@ -189,7 +190,7 @@ export default {
           name: '更多',
           icon: 'iconfont icongengduo4',
           style: 'color:#55d436;background-color:#a3daf759',
-          url: '/SecondHand'
+          url: '/TobeDeveloped'
         }
       ],
       demo2: '',

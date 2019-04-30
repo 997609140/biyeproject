@@ -23,7 +23,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: '172.16.37.133', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

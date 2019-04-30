@@ -39,6 +39,11 @@ export default new Router({
       name: 'Information',
       component: () => import('../view/Information')
     },
+    {
+      path: '/TobeDeveloped',
+      name: 'TobeDeveloped',
+      component: () => import('../components/TobeDeveloped')
+    },
 
     // 导航
     {
@@ -56,6 +61,16 @@ export default new Router({
       path: '/SecondHand',
       name: 'SecondHand',
       component: () => import('../view/Navigation/SecondHand.vue')
+    },
+    {
+      path: '/Losthome',
+      name: 'Losthome',
+      component: () => import('../view/LostandFound/Losthome.vue')
+    },
+    {
+      path: '/addviews',
+      name: 'addviews',
+      component: () => import('../view/LostandFound/AddViews.vue')
     },
       // 资讯更多页面
     {
@@ -109,7 +124,15 @@ export default new Router({
       meta: {
         isLogin: true
       },
-      component: () => import('../view/Help')
+      component: () => import('../view/Myhome/Help')
+    },
+    {
+      path: '/MyDynamic',
+      name: 'MyDynamic',
+      meta: {
+        isLogin: true
+      },
+      component: () => import('../view/Dynamic/MyDynamic.vue')
     },
     {
       path: '/setup',
@@ -117,7 +140,15 @@ export default new Router({
       meta: {
         isLogin: true
       },
-      component: () => import('../view/Setup')
+      component: () => import('../view/Myhome/Set/Setup')
+    },
+    {
+      path: '/CurrentVersion',
+      name: 'CurrentVersion',
+      meta: {
+        isLogin: true
+      },
+      component: () => import('../view/Myhome/Set/CurrentVersion')
     },
     {
       path: '/myviews',

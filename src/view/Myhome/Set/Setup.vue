@@ -2,7 +2,7 @@
   <div class="home-page">
     <x-header style='background-color:#5eadd6'/>
     <group>
-      <cell title="当前版本" is-link>
+      <cell title="当前版本" is-link  link="/CurrentVersion">
         <div slot="icon" style="margin-right:5px;" ><i style="color:#347eec" class="iconfont iconbanbenxinxi"/></div>
       </cell>
     </group>
@@ -87,7 +87,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
