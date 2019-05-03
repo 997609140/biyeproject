@@ -184,9 +184,12 @@ export default {
           console.log(res)
           if (res.data.num === 1) {
             this.showPosition('middle', res.data.title)
-            this.$router.push('/HomePage')
+            localStorage.setItem('tel', this.tel)
             localStorage.setItem('Flag', 'isLogin')
+            localStorage.setItem('username', this.username)
+            localStorage.setItem('from_uid', res.data.results.insertId)
             localStorage.setItem('src', 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg')
+            this.$router.push('/HomePage')
           } else {
             this.showPosition('middle', res.data.title)
           }

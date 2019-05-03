@@ -12,6 +12,17 @@
         :show-counter="false"
       />
     </div>
+    <div v-transfer-dom>
+      <toast
+        v-model="showPositionValue"
+        type="text"
+        :time="1000"
+        is-show-mask
+        :text="title"
+        :position="position">
+        {{ }}
+      </toast>
+    </div>
     <foo-ter/>
   </div>
 </template>
@@ -19,18 +30,25 @@
 <script>
 import FooTer from '../../components/FooTer'
 import axios from 'axios'
-import { XTextarea, XInput, XButton } from 'vux'
+import { XTextarea, XInput, XButton, Toast, TransferDomDirective as TransferDom } from 'vux'
 export default {
   name: 'DynamicPublishing',
+  directives: {
+    TransferDom
+  },
   components: {
     FooTer,
     XTextarea,
     XInput,
-    XButton
+    XButton,
+    Toast
   },
   data () {
     return {
-      uid: localStorage.getItem('form_uid'),
+      uid: localStorage.getItem('form_uid'),    
+      position: 'middle',
+      showPositionValue: false,
+      title: '',
       from_aynamic: {
         aynamic: '',
         from_uid: '',
@@ -40,17 +58,20 @@ export default {
     }
   },
   methods: {
-    onEvent (event) {
-      console.log('on', event)
+    showPosition (position, title) {
+      this.position = position
+      this.title = title
+      this.showPositionValue = true
     },
     submitfrom: function () {
+      var _this = this
       this.from_aynamic.from_uid = localStorage.from_uid
       this.from_aynamic.username = localStorage.username
       var obj = this.from_aynamic
-      console.log(obj)
       axios.post('/api/aynamic', obj)
       .then(function (res) {
-        console.log(res)
+        _this.showPosition('middle', '动态发布成功')
+        _this.$router.push('/Find')
       })
     }
   }

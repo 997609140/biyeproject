@@ -1,13 +1,13 @@
 <template>
   <div class="home-page">
     <x-header
-      style='background-color:#5eadd6'
+      style='background-color:#5eadd6;width: 100%;position: fixed;left: 0px;top: 0px;z-index: 100;'
     >
       <i class="iconfont iconquanzi"/>发现
       <router-link slot="right" to="/DynamicPublishing">动态</router-link>
       <div slot='overwrite-left'></div>
     </x-header>
-
+    <div style="height:50px"></div>
     <div
       class="aynamic"
       v-for="(item, index) in list"
@@ -27,9 +27,9 @@
         <pre>{{item.dynamic}}</pre>
       </li>
       <flexbox class="flexbox-item">
-        <flexbox-item><div class="flex-demo">转发</div></flexbox-item>
-        <flexbox-item><div class="flex-demo">评论</div></flexbox-item>
-        <flexbox-item><div class="flex-demo">点赞</div></flexbox-item>
+        <flexbox-item><div class="flex-demo"><i class="iconfont iconwodefenxiang"/>&nbsp;转发</div></flexbox-item>
+        <flexbox-item><div class="flex-demo"><i class="iconfont iconwodexiaoxi"/>&nbsp;评论</div></flexbox-item>
+        <flexbox-item><div class="flex-demo"><i class="iconfont iconiconfontzhizuobiaozhun44"/>&nbsp;点赞{{item.nume}}</div></flexbox-item>
       </flexbox>
     </div>
 
@@ -69,13 +69,6 @@ export default {
         console.log(this.list)
       }.bind(this))
     },
-    // find () {
-    //   var obj = this.find
-    //   axios.post('/api/aynamic', obj)
-    //   .then(function (res) {
-    //     console.log(res)
-    //   })
-    // },
     onClickItem (item, index) {
       this.$router.push({
         path: '/Dynamic',
@@ -96,7 +89,7 @@ li {
 }
 .aynamic {
   background-color: white;
-  margin: 10px
+  margin: 10px;
 }
 .dyheader {
   padding: 5px 0px;
@@ -114,7 +107,6 @@ li {
   text-align: right
 }
 .view {
-  background-color: #edf3f340;
   margin: 10px 20px
 }
 .flexbox-item {

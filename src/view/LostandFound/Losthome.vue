@@ -63,15 +63,8 @@ export default {
       axios.get('/api/getlostviews')
       .then(function (res) {
         this.list = res.data
-        console.log(this.list)
       }.bind(this))
     }
-    // onClickItem (item, index) {
-    //   this.$router.push({
-    //     path: '/Dynamic',
-    //     query: { list: item }
-    //   })
-    // }
   }
 }
 </script>

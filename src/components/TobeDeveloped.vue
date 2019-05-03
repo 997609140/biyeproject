@@ -1,8 +1,8 @@
 <template>
   <div class="body">
-    <x-header class='header' :title='news' style='background-color:#5eadd6'/>
+    <x-header class='header' style='background-color:#5eadd6'/>
     <div class="home-page">
-      待开发
+      待开发。。。
     </div>
 
   </div>

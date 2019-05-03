@@ -1,9 +1,9 @@
 <template>
   <div class='home-page'>
-    <x-header class='header' title='今日校园' style='background-color:#5eadd6'>
+    <x-header class='header' title='今日校园' style='background-color:#5eadd6;width: 100%;position: fixed;left: 0px;top: 0px;z-index: 100;'>
       <div slot='overwrite-left'></div>
     </x-header>
-
+    <div style="height:46px;"></div>
     <div>
       <search
       v-model="value"
@@ -57,24 +57,6 @@
         </grid-item>
       </grid>
     </div>
-
-    <!-- <div>
-      <div
-        style="margin: 10px;overflow: hidden;"
-        v-for="(item, index) in list"
-        :key= index
-      >
-          <masker style="border-radius: 2px;">
-            <div class="m-img" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
-            <div slot="content" class="m-title">
-              {{item.title}}
-              <br/>
-              <span class="m-time">{{converTime(item.time)}}</span>
-            </div>
-          </masker>
-      </div>
-    </div> -->
-
     <div>
       <panel
         :header="news"
@@ -157,13 +139,13 @@ export default {
         {
           name: '校园比赛',
           icon: 'iconfont iconQYHD_YH',
-          style: 'color:#a6d436;background-color:#b6d8d86e',
+          style: 'color:#a6d436;background-color:#a3daf759',
           url: '/TobeDeveloped'
         },
         {
           name: '班级',
           icon: 'iconfont iconwodexuesheng1',
-          style: 'color:#eac248;background-color:#cdc8dc6e',
+          style: 'color:#eac248;background-color:#80e29e6e',
           url: '/TobeDeveloped'
         }
       ],
@@ -171,7 +153,7 @@ export default {
         {
           name: '兼职招聘',
           icon: 'iconfont iconjianzhi2',
-          style: 'color:#d29f05;background-color:#a3daf759',
+          style: 'color:#d29f05;background-color:#80e29e6e',
           url: '/TobeDeveloped'
         },
         {
@@ -183,8 +165,8 @@ export default {
         {
           name: '外卖订餐',
           icon: 'iconfont iconxiaoyuansongcan',
-          style: 'color:#a7226beb;background-color:#a3daf759',
-          url: '/SecondHand'
+          style: 'color:#a7226beb;background-color:#80e29e6e',
+          url: '/TobeDeveloped'
         },
         {
           name: '更多',
@@ -246,11 +228,6 @@ export default {
     .then(function (res) {
       this.demo01_list = res.data
     }.bind(this))
-
-    // axios.get('/api/list2')
-    // .then(function (res) {
-    //   this.list = res.data
-    // }.bind(this))
   },
 
   methods: {

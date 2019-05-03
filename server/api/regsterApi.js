@@ -25,7 +25,8 @@ router.post('/', (req, res) => {
           console.log(err)
         } else {
           console.log('ok')
-          res.json({title: '注册成功', num: 1})
+          res.json({title: '注册成功', num: 1, results})
+          console.log(res)
         }
       })
     } else {

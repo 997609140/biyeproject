@@ -60,7 +60,7 @@
 <script>
 import FooTer from '../../components/FooTer'
 import axios from 'axios'
-import { XTextarea, Toast, XInput, XButton, Alert, TransferDomDirective as TransferDom, AlertModule } from 'vux'
+import { XTextarea, Toast, XInput, XButton, Alert, TransferDomDirective as TransferDom } from 'vux'
 export default {
   name: 'AddViews',
   directives: {
@@ -96,15 +96,10 @@ export default {
       this.title = title
       this.showPositionValue = true
     },
-    onEvent (event) {
-      console.log('on', event)
-    },
     submitfrom: function () {
       var _this = this
       this.lostviews.username = localStorage.username
       var obj = this.lostviews
-
-      console.log(obj)
       if (obj.Lostname === '' || obj.Lostviews === '' || obj.tel === '') {
         _this.showPosition('middle', '请填入详细完整信息')
       } else {
@@ -114,17 +109,6 @@ export default {
           _this.$router.push({ path: '/Losthome' })
         })
       }
-    },
-    showModule () {
-      AlertModule.show({
-        title: this.title
-      })
-    },
-    showModuleAuto () {
-      this.showModule()
-      setTimeout(() => {
-        AlertModule.hide()
-      }, 1000)
     }
   }
 }

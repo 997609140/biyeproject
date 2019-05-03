@@ -1,7 +1,8 @@
 <template>
   <div class="home-page">
-    <x-header style='background-color:#5eadd6'>动态发布
+    <x-header style='background-color:#5eadd6;width: 100%;position: fixed;left: 0px;top: 0px;z-index: 100;'>动态发布
     </x-header>
+    <div style="height:50px;"></div>
     <div class="dynamic">
       <flexbox>
         <flexbox-item :span="2"><div class="flex-demo"><img width="80px" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552457521393&di=db5044eeadb7b2645b5b12408fae19d5&imgtype=0&src=http%3A%2F%2Fpic.gerenjianli.com%2Fxiaohui2046%2Fb1051.jpg" alt="" srcset=""></div></flexbox-item>
@@ -80,7 +81,7 @@
       <li class="view">
         <pre>{{item.content}}</pre>
         <flexbox class="flexbox-item1">
-          <flexbox-item><div class="flex-demo" @click="onShowf(index)">回复</div></flexbox-item>
+          <flexbox-item><div class="flex-demo" @click="onShowf(index)"><i class="iconfont iconwodexiaoxi"/>&nbsp;回复</div></flexbox-item>
           <flexbox-item><div class="flex-demo"></div></flexbox-item>
           <flexbox-item><div class="flex-demo" @click="getFindViews(index)">详情</div></flexbox-item>
         </flexbox>

@@ -26,6 +26,11 @@
             <span>时间:{{item.time}}</span>
           </div>
         </flexbox-item>
+        <flexbox-item>
+          <div class="delet">
+            <span>删除</span>
+          </div>
+        </flexbox-item>
       </flexbox>
       <li class="view">
         <pre>{{item.dynamic}}</pre>
@@ -75,12 +80,9 @@ export default {
       })
       .then(function (res) {
         this.list = res.data
-        console.log(this.list)
       }.bind(this))
     },
     onClickItem (item, index) {
-      // console.log(item)
-      // console.log(index)
       this.$router.push({
         path: '/Dynamic',
         query: { list: item }
@@ -134,6 +136,11 @@ li {
   text-align: center;
   border-radius: 4px;
   background-clip: padding-box;
+}
+.delet {
+  text-align: right;
+  margin-bottom: 30px;
+  margin-right: 10px
 }
 
 </style>
