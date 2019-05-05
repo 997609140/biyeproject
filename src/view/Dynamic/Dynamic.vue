@@ -9,7 +9,7 @@
         <flexbox-item>
           <div class="flex">
             <span>{{title.name}}</span><br/>
-            <span>时间:{{title.time}}</span>
+            <span>{{converTime(new Date(title.time))}}</span>
           </div>
         </flexbox-item>
       </flexbox>
@@ -74,7 +74,7 @@
         <flexbox-item>
           <div class="flex">
             <span>{{item.topic_type}}</span><br/>
-            <span>时间:{{item.time}}</span>
+            <span>{{converTime(new Date(item.time))}}</span>
           </div>
         </flexbox-item>
       </flexbox>
@@ -121,7 +121,8 @@ export default {
         content: '',
         from_uid: '',
         topic_id: '',
-        topic_type: ''
+        topic_type: '',
+        time: ''
       },
       find_comment: {
         content: '', // 回复内容
@@ -140,6 +141,25 @@ export default {
     this.onload()
   },
   methods: {
+    converTime (UTCDateString) {
+      if (!UTCDateString) {
+        return '-'
+      }
+      function formatFunc (str) {    // 格式化显示
+        return str > 9 ? str : '0' + str
+      }
+      var date2 = new Date(UTCDateString)     // 这步是关键
+      var year = date2.getFullYear()
+      var mon = formatFunc(date2.getMonth() + 1)
+      var day = formatFunc(date2.getDate())
+      var hour = date2.getHours()
+      // var noon = hour >= 12 ? 'PM' : 'AM'
+      hour = hour >= 12 ? hour : hour
+      hour = formatFunc(hour)
+      var min = formatFunc(date2.getMinutes())
+      var dateStr = year + '-' + mon + '-' + day + ' ' + ' ' + hour + ':' + min
+      return dateStr
+    },
     onload () {
       axios.get('/api/findaynamic', {
         params: {
@@ -172,6 +192,9 @@ export default {
     // 评价
     onConfirm () {
       var _this = this
+      var d = new Date()
+      var datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds
+      this.findlist.time = datetime
       this.findlist.from_uid = this.$route.query.list.id
       this.findlist.topic_id = localStorage.from_uid
       this.findlist.topic_type = localStorage.username

@@ -12,12 +12,13 @@ router.get('/api/fand', (req, res) => {
   console.log(req.query)
   var key = req.query.key
   var id = req.query.user_id
-  if (key === 'mydynamic') {
+  if (key === '1') {
     conn.query('SELECT * from dynamic where from_uid = ? order by id desc', id, function (error, results) {
       if (error) {
         throw error
       }
       res.json(results)
+      console.log(results)
     })
   } else {
     conn.query('SELECT * from dynamic order by id desc', function (error, results) {

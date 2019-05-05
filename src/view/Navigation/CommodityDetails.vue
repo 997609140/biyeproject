@@ -1,40 +1,32 @@
 <template>
-  <div style="background-color: #ddf0f3">
+  <div>
     <x-header class='header' :title='item.commodity' style='background-color:#5eadd6'/>
 
-    <div>
+    <div class="swiper">
       <swiper
-        :list="list"
-        v-model="demo01_index"
         @on-index-change="demo01_onIndexChange"
         :auto = true
-        :loop = true></swiper>
-      <div v-transfer-dom>
-        <previewer
-          :list="list"
-          ref="previewer"
-          :options="options"
-          @on-index-change="logIndexChange"></previewer>
-      </div>
+        :loop = true
+      >
+        <swiper-item
+          class="swiper-demo-img"
+          v-for="(item, index) in list"
+          :key="index">
+          <img :src="item" width="100%px">
+        </swiper-item>
+      </swiper>
     </div>
 
     <div class="views">
-      价格：<span>{{item.price}}</span><br/>
-      卖家：<span>{{item.name}}</span><br/>
-      详情：<span>{{item.describe}}</span>
+      <span style="color:red;font-size:30px">￥{{item.price}}</span><br/>
+      卖家：<span style="color:gray;font-size:14px">{{item.name}}</span><br/>
+      电话：<span style="color:gray;font-size:14px">{{item.tel}}</span><br/>
+      <span style="color: gray;font-size: 14px;text-indent: 2em;display: inline-block;margin-top: 15px;">{{item.describe}}</span>
     </div>
-    <!-- <div class="img">
-      <img
-        v-for="(item, index) in list"
-        :key="index"
-        :src="item"
-        width="80%px"
-      >
-    </div> -->
   </div>
 </template>
 <script>
-import { Previewer, TransferDom, Swiper } from 'vux'
+import { Previewer, TransferDom, Swiper, SwiperItem } from 'vux'
 import axios from 'axios'
 export default {
   name: 'CommodityDetails',
@@ -43,7 +35,8 @@ export default {
   },
   components: {
     Previewer,
-    Swiper
+    Swiper,
+    SwiperItem
   },
   data () {
     return {
@@ -96,9 +89,7 @@ export default {
     onImgError (item, $event) {
       console.log(item, $event)
     },
-    logIndexChange (arg) {
-      console.log(arg)
-    },
+    logIndexChange (arg) {},
     show (index) {
       this.$refs.previewer.show(index)
     },
@@ -113,7 +104,9 @@ export default {
 <style scoped>
 .navigion {
   height: 60px;
-  background-color: antiquewhite;
+}
+.swiper {
+  margin: 10px
 }
 .card-padding {
   padding: 15px;
@@ -121,9 +114,6 @@ export default {
 .img {
   margin-top: 10px;
   text-align: center
-}
-img {
-  margin:5px 10px ;
 }
 .views {
   margin: 20px

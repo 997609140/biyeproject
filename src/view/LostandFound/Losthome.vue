@@ -17,7 +17,7 @@
         <flexbox-item>
           <div class="flex">
             <span>{{item.username}}</span><br/>
-            <span>物品:{{item.Lostname}}</span>
+            <span>{{item.Lostname}}</span>
           </div>
         </flexbox-item>
       </flexbox>
@@ -28,6 +28,7 @@
       <li style="font-size:13px;text-indent:2em">
         联系电话：{{item.tel}}
       </li>
+      <li style="font-size:13px;text-indent:16em">{{converTime(new Date(item.time))}}</li>
     </div>
 
     <div style="height:100px;"></div>
@@ -59,6 +60,25 @@ export default {
     this.loading()
   },
   methods: {
+    converTime (UTCDateString) {
+      if (!UTCDateString) {
+        return '-'
+      }
+      function formatFunc (str) {    // 格式化显示
+        return str > 9 ? str : '0' + str
+      }
+      var date2 = new Date(UTCDateString)     // 这步是关键
+      var year = date2.getFullYear()
+      var mon = formatFunc(date2.getMonth() + 1)
+      var day = formatFunc(date2.getDate())
+      var hour = date2.getHours()
+      // var noon = hour >= 12 ? 'PM' : 'AM'
+      hour = hour >= 12 ? hour : hour
+      hour = formatFunc(hour)
+      var min = formatFunc(date2.getMinutes())
+      var dateStr = year + '-' + mon + '-' + day + ' ' + ' ' + hour + ':' + min
+      return dateStr
+    },
     loading () {
       axios.get('/api/getlostviews')
       .then(function (res) {

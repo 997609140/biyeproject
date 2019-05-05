@@ -11,8 +11,8 @@ conn.connect()
 router.post('/', (req, res) => {
   var b = req.body
   console.log(b)
-  var sql = 'INSERT INTO dynamic (`from_uid`,`dynamic`,`name`) values (?,?,?)'
-  var data = [b.from_uid, b.aynamic, b.username]
+  var sql = 'INSERT INTO dynamic (`from_uid`,`dynamic`,`name`,`time`) values (?,?,?,?)'
+  var data = [b.from_uid, b.aynamic, b.username, b.time]
   conn.query(sql, data, function (err, results) {
     if (err) {
       console.log(err)

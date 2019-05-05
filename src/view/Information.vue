@@ -26,6 +26,9 @@ export default {
       time: new Date(this.$route.query.list.time)
     }
   },
+  created: function () {
+    console.log(this.time)
+  },
   methods: {
     converTime (UTCDateString) {
       if (!UTCDateString) {

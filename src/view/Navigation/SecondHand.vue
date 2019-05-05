@@ -14,14 +14,13 @@
           <div
             class="img"
           >
-            <img :src="item.img.split(',')[0]">
+            <img width="100px" :src="item.img.split(',')[0]">
             <div class="secondhandviews">
-              商品名称: <span> {{ item.commodity }}</span><br/>
-
+              <span style="color:#6ec4e0;font-size:16px;">{{ item.commodity }}</span><br/>
               联系人: <span> {{ item.name }}</span><br/>
               价格: <span> {{ item.price }}</span>元
             </div><br/>
-            <span>{{ item.describe }}</span>
+            <div class="views">{{ item.describe }}</div>
           </div>
         </div>
       </card>
@@ -102,6 +101,17 @@ export default {
 .secondhandviews > span {
   color: grey;
   font-size: 14px;
+}
+.views {
+  color: gray;
+  font-size: 14px;
+  text-indent: 2em;
+  display: inline-block;
+  margin-top: 15px;
+  overflow:hidden;
+  height:25px;
+  width: 21em;
+  text-overflow:ellipsis !important;
 }
 </style>
 

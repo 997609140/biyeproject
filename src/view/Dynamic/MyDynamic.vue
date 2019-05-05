@@ -23,12 +23,12 @@
         <flexbox-item>
           <div class="flex">
             <span>{{item.name}}</span><br/>
-            <span>时间:{{item.time}}</span>
+            <span style="font-size:12px;">{{converTime(new Date(item.time))}}</span>
           </div>
         </flexbox-item>
         <flexbox-item>
           <div class="delet">
-            <span>删除</span>
+            <span style="color:red;"><i class="iconfont iconshanchu"/></span>
           </div>
         </flexbox-item>
       </flexbox>
@@ -74,8 +74,8 @@ export default {
     loading () {
       axios.get('/api/fand', {
         params: {
-          key: 'mydynamic',
-          user_id: localStorage.from_uid
+          key: '1',
+          user_id: localStorage.getItem('from_uid')
         }
       })
       .then(function (res) {
@@ -87,6 +87,25 @@ export default {
         path: '/Dynamic',
         query: { list: item }
       })
+    },
+    converTime (UTCDateString) {
+      if (!UTCDateString) {
+        return '-'
+      }
+      function formatFunc (str) {    // 格式化显示
+        return str > 9 ? str : '0' + str
+      }
+      var date2 = new Date(UTCDateString)     // 这步是关键
+      var year = date2.getFullYear()
+      var mon = formatFunc(date2.getMonth() + 1)
+      var day = formatFunc(date2.getDate())
+      var hour = date2.getHours()
+      // var noon = hour >= 12 ? 'PM' : 'AM'
+      hour = hour >= 12 ? hour : hour
+      hour = formatFunc(hour)
+      var min = formatFunc(date2.getMinutes())
+      var dateStr = year + '-' + mon + '-' + day + ' ' + ' ' + hour + ':' + min
+      return dateStr
     }
   }
 }

@@ -45,7 +45,7 @@ export default {
   },
   data () {
     return {
-      uid: localStorage.getItem('form_uid'),    
+      // uid: localStorage.getItem('form_uid'),
       position: 'middle',
       showPositionValue: false,
       title: '',
@@ -65,6 +65,9 @@ export default {
     },
     submitfrom: function () {
       var _this = this
+      var d = new Date()
+      var datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds
+      this.from_aynamic.time = datetime
       this.from_aynamic.from_uid = localStorage.from_uid
       this.from_aynamic.username = localStorage.username
       var obj = this.from_aynamic

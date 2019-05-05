@@ -22,13 +22,12 @@
           >
             <i
               class="iconfont iconzhanghao"
-              style= "color:blue"
+              style= "color:#48b4ce"
               width="24"
               height="24"/>
           </div>
         </x-input>
         <x-input
-          style='color:white'
           class="login-input"
           type="password"
           title="密码"
@@ -44,7 +43,7 @@
             style="padding-right:10px;color:white"
           >
             <i
-              style= "color:blue"
+              style= "color:#48b4ce"
               class="iconfont iconmima"
               width="24"
               height="24"
@@ -53,7 +52,7 @@
         </x-input>
       </div>
       <div class="passforget">
-        <router-link to=""><span>忘记密码<i class="iconfont iconmima"/>？</span></router-link>
+        <router-link to=""><span style="color:#48b4ce;">忘记密码<i class="iconfont iconmima"/>？</span></router-link>
       </div>
       <div class="btn-all">
         <x-button type="primary" @click.native="land">登陆</x-button>
@@ -143,7 +142,7 @@ export default {
           localStorage.setItem('Flag', 'isLogin')
           localStorage.setItem('tel', this.landform.tel)
           localStorage.setItem('src', res.data.src)
-          localStorage.setItem('from_uid', res.data.results.Id)
+          localStorage.setItem('from_uid', res.data.results.id)
           localStorage.setItem('username', res.data.results.username)
           this.title = res.data.title
           // 登录成功后跳转到指定页面
@@ -165,7 +164,7 @@ export default {
 }
 .land {
   height: 100vh;
-  background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552458143705&di=9da45ed2d258e4d2e113cafc4fe8be83&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201705%2F10%2F23aa260746631af7a83052e2e9272a00.jpg');
+  /* background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552458143705&di=9da45ed2d258e4d2e113cafc4fe8be83&imgtype=0&src=http%3A%2F%2Fimg18.3lian.com%2Fd%2Ffile%2F201705%2F10%2F23aa260746631af7a83052e2e9272a00.jpg'); */
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
 }

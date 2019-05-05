@@ -11,8 +11,8 @@ conn.connect()
 router.post('/', (req, res) => {
   var b = req.body
   console.log(b)
-  var sql = 'INSERT INTO Lostfound (`Lostname`,`foundname`,`Lostviews`,`tel`,`username`) values (?,?,?,?,?)'
-  var data = [b.Lostname, b.foundname, b.Lostviews, b.tel, b.username]
+  var sql = 'INSERT INTO Lostfound (`Lostname`,`foundname`,`Lostviews`,`tel`,`username`,`time`) values (?,?,?,?,?,?)'
+  var data = [b.Lostname, b.foundname, b.Lostviews, b.tel, b.username, b.time]
   conn.query(sql, data, function (err, results) {
     if (err) {
       console.log(err)

@@ -86,7 +86,8 @@ export default {
         foundname: '',
         Lostviews: '',
         tel: '',
-        username: ''
+        username: '',
+        time: ''
       }
     }
   },
@@ -99,6 +100,9 @@ export default {
     submitfrom: function () {
       var _this = this
       this.lostviews.username = localStorage.username
+      var d = new Date()
+      var datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds
+      this.lostviews.time = datetime
       var obj = this.lostviews
       if (obj.Lostname === '' || obj.Lostviews === '' || obj.tel === '') {
         _this.showPosition('middle', '请填入详细完整信息')

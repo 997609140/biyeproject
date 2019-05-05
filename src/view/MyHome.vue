@@ -78,7 +78,7 @@ export default {
     return {
       Flag: localStorage.getItem('src'),
       url: localStorage.getItem('src'),
-      username: '...',
+      username: localStorage.getItem('username'),
       varmax: 1,
       list: [{
         class: 'iconfont iconwodeguanzhu',
